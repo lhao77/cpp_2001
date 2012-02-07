@@ -1,0 +1,41 @@
+#include <iostream>
+#include <bitset>
+#include <string.h>
+#include <stdio.h>
+
+#define TMP_LEN 256
+
+void printHex(char *ch,int len);
+void printHex(wchar_t *wch);
+
+int main(int argc,char* argv[])
+{
+//       char *ch = "中国abc";
+//       printHex(ch,strlen(ch));
+        wchar_t *wch = L"中国abc";
+        printHex(wch);
+}
+
+void printHex(char *ch,int len)
+{
+    unsigned char tmp[TMP_LEN];
+    memset(tmp,0,TMP_LEN);
+    memcpy(tmp,ch,TMP_LEN);
+
+    printf("%s\n",tmp);
+    for(int i=0; i<len; i++)
+        std::cout<<std::hex<<(unsigned int)tmp[i]<<"--";
+    std::cout<<std::endl;
+}
+
+void printHex(wchar_t *wch)
+{
+
+        char tmp[TMP_LEN];
+        memset(tmp,0,TMP_LEN);
+        memcpy(tmp,wch,sizeof(wch));
+       
+        for(int i=0;i<TMP_LEN;i++)
+        std::cout<<std::hex<<(unsigned int)tmp[i]<<"--";
+        std::cout<<std::endl;
+}
